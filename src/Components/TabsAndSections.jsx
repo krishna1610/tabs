@@ -4,7 +4,48 @@ class TabsAndSections extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tabs: ["Home", "About", "Contact Us", "Team", "Products"],
+      pages: [
+        {
+          tab: {
+            title: "Home",
+          },
+          section: {
+            content: "This is home page",
+          },
+        },
+        {
+          tab: {
+            title: "About",
+          },
+          section: {
+            content: "This is about page",
+          },
+        },
+        {
+          tab: {
+            title: "Contact Us",
+          },
+          section: {
+            content: "This is contact us page",
+          },
+        },
+        {
+          tab: {
+            title: "Team",
+          },
+          section: {
+            content: "This is team page",
+          },
+        },
+        {
+          tab: {
+            title: "Products",
+          },
+          section: {
+            content: "This is products page",
+          },
+        },
+      ],
       activeIndex: 0,
     };
   }
@@ -16,7 +57,7 @@ class TabsAndSections extends React.Component {
     return (
       <div>
         <ul className="nav nav-tabs">
-          {this.state.tabs.map((tab, index) => {
+          {this.state.pages.map((page, index) => {
             return (
               <li className="nav-item" key={index}>
                 <a
@@ -30,16 +71,23 @@ class TabsAndSections extends React.Component {
                   }}
                   area-current={this.state.activeIndex === index ? "page" : ""}
                 >
-                  {tab}
+                  {page.tab.title}
                 </a>
               </li>
             );
           })}
         </ul>
         <main>
-          <section>
-            <p>This is {this.state.tabs[this.state.activeIndex]} page.</p>
-          </section>
+          {this.state.pages.map((page, index) => {
+            return (
+              <section
+                key={index}
+                className={this.state.activeIndex !== index ? "d-none" : ""}
+              >
+                <p>This is {page.section.content} page.</p>
+              </section>
+            );
+          })}
         </main>
       </div>
     );
