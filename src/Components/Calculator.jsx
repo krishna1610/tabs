@@ -14,8 +14,8 @@ class Calculator extends React.Component {
     this.operatorSelection = this.operatorSelection.bind(this);
   }
 
-  operatorSelection(index) {
-    this.setState({ selectedOperator: index });
+  operatorSelection(event) {
+    this.setState({ selectedOperator: event.target.value });
   }
 
   handleChangeForOperand1(event) {
@@ -56,25 +56,33 @@ class Calculator extends React.Component {
           value={this.state.operand1}
           onChange={this.handleChangeForOperand1}
         ></input>
-        <div className="btn-group" role="group" aria-label="Basic example">
+        <select
+          className="form-select"
+          aria-label="Default select example"
+          onChange={this.operatorSelection}
+          value={this.state.selectedOperator}
+        >
           {this.state.operators.map((operator, index) => {
             return (
-              <button
-                type="button"
-                className={
-                  "btn btn-primary " +
-                  (this.state.selectedOperator === index ? "active" : "")
-                }
-                key={index}
-                onClick={() => {
-                  this.operatorSelection(index);
-                }}
-              >
+              <option key={index} value={index}>
                 {operator}
-              </button>
+              </option>
+              // <button
+              //   type="button"
+              //   className={
+              //     "btn btn-primary " +
+              //     (this.state.selectedOperator === index ? "active" : "")
+              //   }
+              //   key={index}
+              //   onClick={() => {
+              //     this.operatorSelection(index);
+              //   }}
+              // >
+              //   {operator}
+              // </button>
             );
           })}
-        </div>
+        </select>
         <input
           type="text"
           value={this.state.operand2}
