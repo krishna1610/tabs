@@ -67,19 +67,6 @@ class Calculator extends React.Component {
               <option key={index} value={index}>
                 {operator}
               </option>
-              // <button
-              //   type="button"
-              //   className={
-              //     "btn btn-primary " +
-              //     (this.state.selectedOperator === index ? "active" : "")
-              //   }
-              //   key={index}
-              //   onClick={() => {
-              //     this.operatorSelection(index);
-              //   }}
-              // >
-              //   {operator}
-              // </button>
             );
           })}
         </select>
