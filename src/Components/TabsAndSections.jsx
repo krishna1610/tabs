@@ -84,7 +84,7 @@ class TabsAndSections extends React.Component {
                 key={index}
                 className={this.state.activeIndex !== index ? "d-none" : ""}
               >
-                <p>This is {page.section.content} page.</p>
+                <p>{page.section.content}</p>
               </section>
             );
           })}
