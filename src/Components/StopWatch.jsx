@@ -1,4 +1,6 @@
 import React from "react";
+import StopWatchBtn from "./StopWatchBtn";
+import StopWatchTimer from "./StopWatchTimer";
 // 3 buttons -- start button, stop button, reset button
 // start timer when user clicks start button
 // stop timer when user clicks stop button
@@ -15,6 +17,7 @@ class StopWatch extends React.Component {
     };
     this.increment = this.increment.bind(this);
     this.timerReset = this.timerReset.bind(this);
+    this.timerChange = this.timerChange.bind(this);
   }
 
   increment() {
@@ -40,23 +43,8 @@ class StopWatch extends React.Component {
   render() {
     return (
       <div>
-        <div className="btn-group" role="group" aria-label="Basic example">
-          {this.state.btns.map((btn, index) => {
-            return (
-              <button
-                type="button"
-                className="btn btn-primary"
-                key={index}
-                onClick={() => {
-                  this.timerChange(btn);
-                }}
-              >
-                {btn}
-              </button>
-            );
-          })}
-        </div>
-        <p>{this.state.timer}</p>
+        <StopWatchBtn btns={this.state.btns} timerChange={this.timerChange} />
+        <StopWatchTimer timer={this.state.timer} />
       </div>
     );
   }
